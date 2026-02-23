@@ -1,0 +1,23 @@
+#root {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  #root {
+    min-width: 1024px;
+  }
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  font-size: var(--font-size-base);
+  color: #000;
+}

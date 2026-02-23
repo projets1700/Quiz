@@ -1,0 +1,204 @@
+/* Pages Auth (Register, Login, VerifyEmail) – rendu site web desktop */
+
+.auth-page {
+  min-height: 100vh;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: var(--spacing-mobile-lg) var(--spacing-mobile);
+  }
+
+  .auth-card {
+    padding: var(--spacing-mobile-lg);
+  }
+
+  .auth-card h1 {
+    font-size: var(--font-size-mobile);
+  }
+
+  .auth-card input,
+  .auth-card button {
+    min-height: var(--touch-min);
+    font-size: 16px;
+  }
+
+  .auth-card button {
+    font-size: var(--font-size-mobile);
+  }
+}
+
+@media (min-width: 768px) {
+  .auth-page {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-page {
+    min-width: 1024px;
+  }
+}
+
+/* Carte du formulaire : largeur fixe type bloc contenu site web (pas pleine largeur mobile) */
+/* Inscription et Connexion : fond vert transparent, texte noir, bouton bleu */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 1.5rem 1.25rem;
+  background: var(--box-bg-green);
+  border: 1px solid #000;
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(203, 226, 86, 0.15);
+}
+
+.auth-card h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: var(--font-size-base);
+  color: #000;
+}
+
+.auth-subtitle {
+  margin: 0 0 2rem 0;
+  font-size: var(--font-size-base);
+  color: #000;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.auth-card label {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: #000;
+}
+
+.auth-card input {
+  padding: 0.875rem 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  width: 100%;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.auth-card input::placeholder {
+  color: #000;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.auth-card input:disabled {
+  background: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.auth-error {
+  padding: 1rem 1.25rem;
+  background: #fee;
+  color: #000;
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+}
+
+.auth-success {
+  padding: 1rem 1.25rem;
+  background: #e8f5e9;
+  color: #000;
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  margin-bottom: 0.5rem;
+}
+
+.auth-session-expired {
+  padding: 1rem 1.25rem;
+  background: #e3f2fd;
+  color: #000;
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  margin-bottom: 0.5rem;
+}
+
+.auth-card button {
+  padding: 0.875rem 1.5rem;
+  margin-top: 0.5rem;
+  background: rgba(41, 121, 210, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth-card button:hover:not(:disabled) {
+  background: rgb(41, 121, 210);
+}
+
+.auth-card button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #000;
+  text-align: center;
+  font-size: var(--font-size-base);
+  color: #000;
+}
+
+.auth-footer a {
+  color: #000;
+  font-weight: 500;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Boîte succès avec lien de vérification (page inscription) */
+.auth-verify-box {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.auth-verify-box p {
+  margin: 0 0 1rem 0;
+}
+
+.auth-verify-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: rgba(41, 121, 210, 0.9);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.auth-verify-link:hover {
+  background: rgb(41, 121, 210);
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .auth-card {
+    padding: 2.5rem 3rem;
+  }
+}

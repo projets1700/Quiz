@@ -1,0 +1,30 @@
+# Dépendances
+node_modules/
+
+# Variables d'environnement (secrets)
+.env
+.env.local
+.env.*.local
+
+# Fichiers uploadés (images, vidéos)
+backend/uploads/
+
+# Build / sortie
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE (optionnel)
+.idea/
+.vscode/
+*.swp
+*.swo
