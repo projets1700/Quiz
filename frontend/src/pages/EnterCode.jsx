@@ -6,9 +6,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { join, setParticipantToken } from '../services/participantService';
-import './Auth.css';
-import './EnterCode.css';
-
 function EnterCode() {
   const [searchParams] = useSearchParams();
   const [code, setCode] = useState('');

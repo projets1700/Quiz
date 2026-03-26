@@ -13,9 +13,6 @@ import {
   updateQuestion,
   deleteQuestion,
 } from '../services/quizService';
-import './QuizForm.css';
-import './EditQuiz.css';
-
 const QUESTION_TYPES = [
   { value: 'qcm-unique', label: 'QCM réponse unique' },
   { value: 'qcm-multiple', label: 'QCM réponses multiples' },

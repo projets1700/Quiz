@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getQuiz, getQuizLiveState } from '../services/quizService';
-import './QuizLive.css';
-
 function QuizRepertoire() {
   const { id } = useParams();
   const navigate = useNavigate();

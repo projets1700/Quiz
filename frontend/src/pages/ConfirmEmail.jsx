@@ -7,9 +7,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { confirmEmailStatus, confirmEmailAction } from '../services/authService';
-import './Auth.css';
-import './ConfirmEmail.css';
-
 function ConfirmEmail() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();

@@ -7,8 +7,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { createQuiz } from '../services/quizService';
-import './QuizForm.css';
-
 function CreateQuiz() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');

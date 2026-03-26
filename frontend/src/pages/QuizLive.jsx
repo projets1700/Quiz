@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import { getQuiz, getQuizLiveState, nextQuestion, launchQuiz } from '../services/quizService';
-import './QuizLive.css';
-
 const STATE_LABELS = { brouillon: 'Brouillon', pret: 'Prêt', ouvert: 'Ouvert', actif: 'Lancé', termine: 'Terminé' };
 
 function QuizLive() {

@@ -35,12 +35,12 @@ router.post('/', quizController.create);
 router.get('/:id/session', quizController.getSession);
 // Liste des sessions du quiz (triées par numéro ordre croissant)
 router.get('/:id/sessions', quizController.listSessions);
-// Supprimer une session (interdit si actif ou ouvert)
-router.delete('/:id/sessions/:sessionId', quizController.deleteSession);
 // Supprimer toutes les sessions du quiz (interdit si actif ou ouvert)
 router.delete('/:id/sessions', quizController.deleteAllSessions);
 // Statistiques d'une session spécifique
 router.get('/:id/sessions/:sessionId/stats', quizController.getSessionStats);
+// Supprimer une session (interdit si actif ou ouvert)
+router.delete('/:id/sessions/:sessionId', quizController.deleteSession);
 // Statistiques du quiz (taux de participation, bonnes/mauvaises réponses en %)
 router.get('/:id/stats', quizController.getStats);
 // Suivi temps réel (question courante, réponses, timer) pour le créateur

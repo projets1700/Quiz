@@ -4,8 +4,6 @@
  */
 
 import { QRCodeSVG } from 'qrcode.react';
-import './QuizCodeDisplay.css';
-
 export default function QuizCodeDisplay({ accessCode, onClose, title, showLaunchButton, onLaunch, launchLoading }) {
   const joinUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/join?code=${encodeURIComponent(accessCode || '')}`

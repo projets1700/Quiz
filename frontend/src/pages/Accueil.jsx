@@ -3,8 +3,6 @@
  */
 
 import { Link } from 'react-router-dom';
-import './Accueil.css';
-
 function Accueil() {
   return (
     <div className="accueil-page">

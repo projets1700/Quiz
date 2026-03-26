@@ -7,8 +7,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../services/authService';
-import './Auth.css';
-
 function Register() {
   // État local du formulaire : email et mot de passe saisis par l'utilisateur
   const [email, setEmail] = useState('');

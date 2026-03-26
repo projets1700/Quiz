@@ -13,8 +13,6 @@ import {
   getRanking,
   clearParticipantSession,
 } from '../services/participantService';
-import './PlayQuiz.css';
-
 function PlayQuiz() {
   const navigate = useNavigate();
   const [state, setState] = useState(null);

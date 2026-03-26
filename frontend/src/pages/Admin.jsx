@@ -19,8 +19,6 @@ import {
   deleteQuizAdmin,
 } from '../services/adminService';
 import { getUser, clearSession } from '../utils/sessionStorage';
-import './Admin.css';
-
 const MAX_ADMINS = 5;
 
 function Admin() {

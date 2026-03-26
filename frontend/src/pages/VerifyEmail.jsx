@@ -8,8 +8,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { verifyEmail } from '../services/authService';
-import './Auth.css';
-
 function VerifyEmail() {
   // useSearchParams : accès aux paramètres d'URL (ex: ?token=abc123)
   const [searchParams] = useSearchParams();

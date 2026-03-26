@@ -147,17 +147,6 @@ export async function getQuizSessions(quizId) {
   return data;
 }
 
-/** Supprimer une session (interdit si actif ou ouvert) */
-export async function deleteSession(quizId, sessionId) {
-  const res = await fetch(`${API_BASE}/${quizId}/sessions/${sessionId}`, {
-    method: 'DELETE',
-    headers: getAuthHeaders(),
-  });
-  const data = await res.json().catch(() => ({}));
-  handleResponse(res, data);
-  if (!res.ok) throw new Error(data.message || 'Erreur suppression de la session');
-}
-
 /** Supprimer toutes les sessions d'un quiz (interdit si actif ou ouvert) */
 export async function deleteAllSessions(quizId) {
   const res = await fetch(`${API_BASE}/${quizId}/sessions`, {
@@ -167,6 +156,17 @@ export async function deleteAllSessions(quizId) {
   const data = await res.json().catch(() => ({}));
   handleResponse(res, data);
   if (!res.ok) throw new Error(data.message || 'Erreur suppression des sessions');
+}
+
+/** Supprimer une session (interdit si actif ou ouvert) */
+export async function deleteSession(quizId, sessionId) {
+  const res = await fetch(`${API_BASE}/${quizId}/sessions/${sessionId}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  });
+  const data = await res.json().catch(() => ({}));
+  handleResponse(res, data);
+  if (!res.ok) throw new Error(data.message || 'Erreur suppression de la session');
 }
 
 /** Statistiques d'une session spécifique */

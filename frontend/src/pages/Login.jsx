@@ -8,8 +8,6 @@ import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { login } from '../services/authService';
 import { setToken, setUser } from '../utils/sessionStorage';
-import './Auth.css';
-
 function Login() {
   // État local du formulaire
   const [email, setEmail] = useState('');

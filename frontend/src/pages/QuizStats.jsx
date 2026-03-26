@@ -18,8 +18,6 @@ import {
   Label,
 } from 'recharts';
 import { getQuizStats } from '../services/quizService';
-import './QuizStats.css';
-
 const CHART_VIEWS = [
   { id: 'participants', label: 'Participant', icon: '👥' },
   { id: 'duree', label: 'Temps moyen', icon: '⌛' },

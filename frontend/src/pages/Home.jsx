@@ -5,8 +5,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser, clearSession } from '../utils/sessionStorage';
-import './Home.css';
-
 function Home() {
   const [user, setUser] = useState(null);
 

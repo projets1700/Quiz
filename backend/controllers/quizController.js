@@ -987,16 +987,23 @@ async function deleteSession(req, res) {
   try {
     const quizId = parseInt(req.params.id, 10);
     const sessionId = parseInt(req.params.sessionId, 10);
-    if (Number.isNaN(quizId) || Number.isNaN(sessionId)) return res.status(400).json({ message: 'ID invalide' });
+    if (Number.isNaN(quizId) || Number.isNaN(sessionId)) {
+      return res.status(400).json({ message: 'ID invalide' });
+    }
     const check = await getQuizIfAllowed(quizId, req.user.id, req.user.role);
     if (check.error) return res.status(check.error).json({ message: check.message });
 
     if (check.quiz.state === 'actif' || check.quiz.state === 'ouvert') {
-      return res.status(400).json({ message: 'Impossible de supprimer : le quiz est en cours ou ouvert. Terminez-le d\'abord.' });
+      return res.status(400).json({ message: 'Impossible de supprimer la session : le quiz est en cours ou ouvert. Terminez-le d\'abord.' });
     }
 
-    const result = await pool.query('DELETE FROM quiz_sessions WHERE id = $1 AND quiz_id = $2 RETURNING id', [sessionId, quizId]);
-    if (result.rowCount === 0) return res.status(404).json({ message: 'Session introuvable' });
+    const del = await pool.query(
+      'DELETE FROM quiz_sessions WHERE id = $1 AND quiz_id = $2 RETURNING id',
+      [sessionId, quizId]
+    );
+    if (del.rowCount === 0) {
+      return res.status(404).json({ message: 'Session introuvable' });
+    }
     return res.status(200).json({ message: 'Session supprimée.' });
   } catch (err) {
     console.error('Erreur deleteSession:', err);

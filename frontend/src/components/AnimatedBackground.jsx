@@ -4,8 +4,6 @@
  * Logo CEA affiché sur les pages Accueil et Home (sans fond noir).
  */
 import { useLocation } from 'react-router-dom';
-import './AnimatedBackground.css';
-
 const ORB_CONFIG = [
   { w: 80, h: 80, left: '10%', top: '20%', opacity: 0.85, anim: 'orb-float-1', duration: 32 },
   { w: 60, h: 60, left: '75%', top: '15%', opacity: 0.8, anim: 'orb-float-2', duration: 11 },

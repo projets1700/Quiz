@@ -6,8 +6,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getQuizzes, openQuiz, endQuiz, deleteQuiz, getQuizLiveState } from '../services/quizService';
-import './QuizList.css';
-
 const STATE_LABELS = { brouillon: 'Brouillon', pret: 'Prêt', ouvert: 'Ouvert', actif: 'Actif', termine: 'Terminé' };
 const STATE_CLASS = { brouillon: 'state-draft', pret: 'state-ready', ouvert: 'state-open', actif: 'state-active', termine: 'state-done' };
 

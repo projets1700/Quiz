@@ -15,8 +15,6 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import VerifyEmail from './pages/VerifyEmail';
 import ConfirmEmail from './pages/ConfirmEmail';
-import './App.css';
-
 const Home = lazy(() => import('./pages/Home'));
 const QuizList = lazy(() => import('./pages/QuizList'));
 const CreateQuiz = lazy(() => import('./pages/CreateQuiz'));

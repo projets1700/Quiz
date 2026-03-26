@@ -6,8 +6,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getQuizSessions, deleteAllSessions, deleteSession } from '../services/quizService';
-import './QuizSessions.css';
-
 const STATE_LABELS = { ouvert: 'Ouvert', actif: 'Actif', termine: 'Terminé' };
 
 function formatDate(d) {
@@ -22,7 +20,7 @@ function QuizSessions() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [deleting, setDeleting] = useState(false);
-  const [deletingSessionId, setDeletingSessionId] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
 
   const loadSessions = useCallback(() => {
     setLoading(true);
@@ -37,19 +35,6 @@ function QuizSessions() {
     loadSessions();
   }, [loadSessions]);
 
-  const handleDeleteSession = async (sessionId) => {
-    if (!window.confirm('Supprimer cette session ? Cette action est irréversible.')) return;
-    setDeletingSessionId(sessionId);
-    try {
-      await deleteSession(id, sessionId);
-      loadSessions();
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setDeletingSessionId(null);
-    }
-  };
-
   const handleDeleteAll = async () => {
     if (!window.confirm('Supprimer toutes les sessions de ce quiz ? Cette action est irréversible.')) return;
     setDeleting(true);
@@ -63,12 +48,25 @@ function QuizSessions() {
     }
   };
 
+  const handleDeleteOne = async (sessionId, sessionIndex) => {
+    if (!window.confirm(`Supprimer la session ${sessionIndex + 1} ? Cette action est irréversible.`)) return;
+    setDeletingId(sessionId);
+    try {
+      await deleteSession(id, sessionId);
+      loadSessions();
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   if (loading) return <div className="quiz-sessions-page"><div className="quiz-sessions-loading">Chargement des sessions…</div></div>;
   if (error) return <div className="quiz-sessions-page"><div className="quiz-sessions-error">{error}</div><Link to="/quizzes">Retour aux quiz</Link></div>;
   if (!data) return null;
 
   const { quiz, sessions } = data;
-  const canDelete = quiz.state !== 'actif' && quiz.state !== 'ouvert';
+  const canDeleteSessions = quiz.state !== 'actif' && quiz.state !== 'ouvert';
 
   return (
     <div className="quiz-sessions-page">
@@ -83,7 +81,7 @@ function QuizSessions() {
         <section className="quiz-sessions-section">
           <div className="quiz-sessions-section-header">
             <h2>Liste des sessions</h2>
-            {sessions.length > 0 && canDelete && (
+            {sessions.length > 0 && canDeleteSessions && (
               <button
                 type="button"
                 className="quiz-sessions-btn-delete-all"
@@ -134,16 +132,16 @@ function QuizSessions() {
                                 <line x1="6" y1="20" x2="6" y2="14" />
                               </svg>
                             </Link>
-                            {canDelete && (
+                            {canDeleteSessions && (
                               <button
                                 type="button"
-                                className="quiz-sessions-btn-delete"
-                                onClick={() => handleDeleteSession(s.id)}
-                                disabled={deletingSessionId === s.id}
-                                title="Supprimer la session"
+                                className="quiz-sessions-btn-trash"
+                                title="Supprimer cette session"
                                 aria-label={`Supprimer la session ${idx + 1}`}
+                                disabled={deleting || deletingId !== null}
+                                onClick={() => handleDeleteOne(s.id, idx)}
                               >
-                                <svg className="quiz-sessions-delete-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <svg className="quiz-sessions-trash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                                   <polyline points="3 6 5 6 21 6" />
                                   <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                                   <line x1="10" y1="11" x2="10" y2="17" />
@@ -191,16 +189,16 @@ function QuizSessions() {
                         </svg>
                         Statistiques
                       </Link>
-                      {canDelete && (
+                      {canDeleteSessions && (
                         <button
                           type="button"
-                          className="quiz-sessions-btn-delete"
-                          onClick={() => handleDeleteSession(s.id)}
-                          disabled={deletingSessionId === s.id}
-                          title="Supprimer la session"
+                          className="quiz-sessions-btn-trash quiz-sessions-btn-trash--card"
+                          title="Supprimer cette session"
                           aria-label={`Supprimer la session ${idx + 1}`}
+                          disabled={deleting || deletingId !== null}
+                          onClick={() => handleDeleteOne(s.id, idx)}
                         >
-                          <svg className="quiz-sessions-delete-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <svg className="quiz-sessions-trash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                             <polyline points="3 6 5 6 21 6" />
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                             <line x1="10" y1="11" x2="10" y2="17" />
