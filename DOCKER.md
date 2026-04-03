@@ -2,7 +2,19 @@
 
 ## Prérequis
 
-- Docker et Docker Compose installés
+- **Docker Desktop pour Windows** installé et **démarré** (icône baleine dans la barre des tâches → *Engine running*).
+- Docker Compose est inclus avec Docker Desktop.
+
+### Erreur `connect ENOENT \\.\pipe\dockerBackendApiServer` ou « Max retries reached »
+
+Cela signifie que **le moteur Docker ne tourne pas** ou que le client ne peut pas lui parler (pipe Windows). Ce n’est **pas** un problème du fichier `docker-compose.yml`.
+
+1. Ouvrez **Docker Desktop** (menu Démarrer → Docker Desktop).
+2. Attendez la fin du démarrage (plus de spinner ; état du moteur OK).
+3. Testez dans un terminal : `docker info` (doit afficher des infos sans erreur).
+4. Relancez : `start-docker.cmd` ou `docker compose up -d --build`.
+
+Si ça échoue encore : quittez Docker Desktop complètement (clic droit sur l’icône → *Quit*), rouvrez-le ; en dernier recours **redémarrez Windows**. Vérifiez aussi que la virtualisation / WSL 2 est activée (Docker Desktop vous le signale dans les paramètres).
 
 ## Lancement
 

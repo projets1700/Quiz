@@ -7,7 +7,6 @@ function Accueil() {
   return (
     <div className="accueil-page">
       <header className="accueil-header">
-        <h1 className="accueil-logo">Quiz MVP</h1>
         <nav className="accueil-header-nav">
           <Link to="/login" className="accueil-btn-login">Connexion</Link>
         </nav>

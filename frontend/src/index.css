@@ -606,7 +606,7 @@ button:focus-visible {
 
 .accueil-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--header-border);
@@ -645,13 +645,6 @@ button:focus-visible {
   padding: 2rem;
   padding-top: 24rem;
   gap: 1rem;
-}
-
-.accueil-logo {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--header-text);
 }
 
 .accueil-play-block {
@@ -717,10 +710,6 @@ button:focus-visible {
   .accueil-main {
     padding: var(--spacing-mobile-lg) var(--spacing-mobile);
     padding-top: 18rem;
-  }
-
-  .accueil-logo {
-    font-size: 1.25rem;
   }
 
   .accueil-play-circle {
